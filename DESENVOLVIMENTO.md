@@ -3,8 +3,7 @@
 Site da **Maria Lanches** (MEI, São Paulo/SP) — lanchonete aberta em 05/2026.
 Razão social: 66.870.166 Maria Cristina Pereira Dias · CNAE 56.11-2/03.
 
-Diferente da maioria dos sites do Empresa Pronta, este **não é institucional**:
-o coração é o cardápio com carrinho. O cliente monta o pedido no site e
+Este site **não é institucional**: o coração é o cardápio com carrinho. O cliente monta o pedido no site e
 finaliza no WhatsApp — sem checkout, sem pagamento online, sem backend.
 Desde 11/08/2026 o site também capta interessados em **franquia**.
 
@@ -194,9 +193,10 @@ parte de franquia.
 ## Fotos dos pratos
 
 ⚠️ **As 23 fotos de prato são de BANCO (Pexels), não são os lanches da casa.**
-Entraram a pedido do Leonardo em 11/08/2026 **só para avaliar o layout pronto**;
-as fotos reais vêm do cliente depois. **Não publicar assim** — o cliente recebe
-o que está na foto, e foto de outro lanche é propaganda enganosa.
+Entraram **só para avaliar o layout com o cardápio cheio**; as fotos reais da
+lanchonete substituem estas antes da publicação. **Não publicar assim** — o
+cliente recebe o que está na foto, e foto de outro lanche é propaganda
+enganosa.
 
 - Colhidas com o `harvest_imagens.py` da `_design-library`, **uma busca por
   prato** (senão o cardápio inteiro sai com a mesma foto de hambúrguer).
@@ -235,8 +235,8 @@ texto é vetor — por isso os assets finais são WebP/PNG, não SVG.
 
 ## Validação já feita (11/08/2026)
 
-Medida com iframe na mesma origem (o Browser pane devolve `clientWidth 0` e
-mente) e Chrome headless:
+Medida com Chrome headless, carregando o site num iframe de mesma origem e
+lendo os retângulos e o CSS computado de dentro dele:
 
 - **Overflow horizontal: 0 casos** em 8 rotas × 4 larguras (360/390/768/1280),
   refeito a cada mudança (antes das páginas legais eram 4 rotas × 6 larguras)
@@ -271,8 +271,10 @@ verdade antes de publicar.
       página de contato e no bloco de responsável dos documentos legais.
 - [ ] **Cardápio real** — os 24 itens e preços em `cardapio.js` são exemplo
       plausível, **não são o cardápio da casa**.
-- [ ] **Endereço, horário de funcionamento e formas de pagamento** conferidos
-      com a Maria Cristina (o horário atual é chute: 18h às 23h30, fechado terça)
+- [ ] **Horário de funcionamento e formas de pagamento** conferidos com a
+      proprietária (o horário atual é suposição: 18h às 23h30, fechado terça)
+- [ ] Confirmar o número na Rua Palha Brava (o CEP 08161-290 resolve para essa
+      rua, no Jardim dos Ipês)
 - [ ] **Fotos reais dos lanches** — hoje são de banco, só para o preview
       (ver "Fotos dos pratos"). Sobrescrever `public/cardapio/<id>.webp`
 - [ ] Instagram (`contato.instagram` vazio esconde o link sozinho)
@@ -284,7 +286,7 @@ verdade antes de publicar.
 - [ ] Confirmar se o e-mail `atendimento@marialanches.com.br` já existe e
       recebe de verdade — o site publica ele como canal de atendimento
 - [ ] **Revisão jurídica dos três documentos legais**, principalmente franquia
-- [ ] **Confirmar com a Maria Cristina se o programa de franquia existe mesmo**
+- [ ] **Confirmar com a proprietária se o programa de franquia existe mesmo**
       e em que estágio — o site hoje diz "estruturando a expansão"
 - [ ] Registro da marca no INPI e virar `franquia.marcaRegistrada`
 - [ ] COF pronta → apontar o arquivo em `franquia.cofUrl` (o link aparece só)

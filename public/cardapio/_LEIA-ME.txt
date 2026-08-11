@@ -1,3 +1,5 @@
-AVISO: fotos de banco (Pexels), colhidas na _design-library para o Leonardo
-avaliar o layout. NAO sao os lanches da casa — trocar por foto real antes
-de publicar. Credito e licenca de cada uma abaixo.
+AVISO: as fotos desta pasta sao de banco de imagens (Pexels) e servem para
+avaliar o layout com o cardapio cheio. NAO sao os lanches da casa: trocar
+pelas fotos reais antes de publicar. Basta sobrescrever o arquivo mantendo
+o mesmo nome (que e o id do item no cardapio.js).
+Credito e licenca de cada foto em _creditos.json.

@@ -2,9 +2,9 @@
   Placeholder honesto de foto de prato.
 
   Enquanto não existir foto REAL do lanche, o card mostra a silhueta da
-  categoria + o selo "foto em breve" — nunca foto de banco nem imagem gerada
-  por IA. O cliente recebe o que está na foto; foto de outro lanche é
-  propaganda enganosa.
+  categoria + o selo "foto em breve" — nunca a foto de outro lanche. O cliente
+  recebe o que está na foto; foto que não corresponde ao item é propaganda
+  enganosa.
 
   Nada de inicial gigante aqui: seis dos oito lanches começam com "X" e a
   grade inteira virava uma parede de X, que lê como imagem quebrada.

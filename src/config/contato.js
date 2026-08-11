@@ -5,7 +5,6 @@
 
 export const empresa = {
   // O nome que aparece em TODO o site (header, títulos, mensagem do pedido).
-  // Confirmado pelo Leonardo em 11/08/2026: é "Maria Lanches", igual à logo.
   nome: 'Maria Lanches',
   razaoSocial: '66.870.166 Maria Cristina Pereira Dias',
   cnpj: '66.870.166/0001-77',
@@ -16,16 +15,15 @@ export const empresa = {
 
 export const contato = {
   // DDI + DDD + número, só dígitos. É para cá que vai todo pedido.
-  // Confirmado pelo Leonardo em 11/08/2026: (11) 92201-1449.
   whatsapp: '5511922011449',
   // Vazio ('') some do site sozinho.
   email: 'atendimento@marialanches.com.br',
   // ⚠️ TROCAR: @ do Instagram, sem o @. Vazio some sozinho.
   instagram: '',
-  // ⚠️ TROCAR: endereço completo. Vazio = site assume "só entrega".
-  endereco: 'Rua Exemplo, 123 — Vila Exemplo, São Paulo/SP',
+  // Endereço completo. Vazio = site assume "só entrega".
+  endereco: 'Rua Palha Brava, 23 — Jardim dos Ipês, São Paulo/SP, CEP 08161-290',
   // Link do mapa. Vazio esconde o botão "Ver no mapa".
-  mapa: '',
+  mapa: 'https://www.google.com/maps/search/?api=1&query=Rua%20Palha%20Brava%2C%2023%20%E2%80%94%20Jardim%20dos%20Ip%C3%AAs%2C%20S%C3%A3o%20Paulo/SP%2C%20CEP%2008161-290',
 }
 
 /** Horário de funcionamento. `fechado: true` some da lista de dias abertos. */

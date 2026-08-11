@@ -22,7 +22,7 @@ npm run build    # produção → dist/
 | Regra do carrinho e mensagem do WhatsApp | `src/store/carrinho.js` |
 
 As regras do projeto, as armadilhas já mapeadas e o que falta antes de publicar
-estão no [CLAUDE.md](CLAUDE.md).
+estão no [DESENVOLVIMENTO.md](DESENVOLVIMENTO.md).
 
 ## Deploy
 

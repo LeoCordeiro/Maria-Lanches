@@ -5,9 +5,9 @@
    exemplo, montado para o site ficar navegável. NÃO é o cardápio real da
    Maria Lanches — trocar por nome/descrição/preço de verdade antes de publicar.
 
-   ⚠️ FOTOS SÃO DE BANCO (Pexels), não são os lanches da casa. Estão aqui
-   a pedido do Leonardo (11/08/2026) só para avaliar o layout pronto; as
-   fotos reais vêm do cliente depois. Crédito e licença de cada uma em
+   ⚠️ FOTOS SÃO DE BANCO (Pexels), não são os lanches da casa. Entraram só
+   para avaliar o layout com o cardápio cheio; as fotos reais da lanchonete
+   substituem estas antes da publicação. Crédito e licença de cada uma em
    `public/cardapio/_creditos.json`.
    NÃO PUBLICAR ASSIM: foto de outro lanche é propaganda enganosa. Para
    trocar, basta sobrescrever `public/cardapio/<id>.webp` — nenhuma linha
