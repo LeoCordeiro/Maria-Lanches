@@ -3,3 +3,7 @@ dist/
 .DS_Store
 *.log
 .env.local
+
+# Notas locais de assistente — não vão para o repositório
+CLAUDE.md
+.claude/
