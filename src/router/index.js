@@ -22,6 +22,31 @@ const routes = [
     component: () => import('@/pages/Contato.vue'),
     meta: { titulo: 'Contato e localização' },
   },
+  {
+    path: '/franquia',
+    name: 'franquia',
+    component: () => import('@/pages/Franquia.vue'),
+    meta: { titulo: 'Seja um franqueado' },
+  },
+  // Legais em chunk próprio: só carrega quando alguém abre.
+  {
+    path: '/privacidade',
+    name: 'privacidade',
+    component: () => import('@/pages/legal/Privacidade.vue'),
+    meta: { titulo: 'Política de privacidade' },
+  },
+  {
+    path: '/termos',
+    name: 'termos',
+    component: () => import('@/pages/legal/Termos.vue'),
+    meta: { titulo: 'Termos de uso' },
+  },
+  {
+    path: '/politica-de-franquia',
+    name: 'politica-franquia',
+    component: () => import('@/pages/legal/PoliticaFranquia.vue'),
+    meta: { titulo: 'Política de franquia' },
+  },
   { path: '/:qualquer(.*)*', redirect: '/' },
 ]
 

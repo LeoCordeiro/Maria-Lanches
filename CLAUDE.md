@@ -6,6 +6,7 @@ Razão social: 66.870.166 Maria Cristina Pereira Dias · CNAE 56.11-2/03.
 Diferente da maioria dos sites do Empresa Pronta, este **não é institucional**:
 o coração é o cardápio com carrinho. O cliente monta o pedido no site e
 finaliza no WhatsApp — sem checkout, sem pagamento online, sem backend.
+Desde 11/08/2026 o site também capta interessados em **franquia**.
 
 ## Stack
 
@@ -75,6 +76,8 @@ produza frames.**
 | Regra do carrinho e mensagem do WhatsApp | `src/store/carrinho.js` |
 | Animação de "adicionar ao carrinho" | `src/utils/voar.js` |
 | Ícones | `src/components/Icone.vue` |
+| Ligar/desligar a franquia no site | `franquia.ativa` em `contato.js` |
+| Data no topo dos documentos legais | `legalAtualizadoEm` em `contato.js` |
 
 ## Carrinho
 
@@ -139,6 +142,55 @@ o carrinho num arco (`voar.js`, Web Animations API), o carrinho chacoalha e o
 total troca com uma girada. Nada mais no site anima com essa intensidade.
 Tudo respeita `prefers-reduced-motion`.
 
+## Franquia e páginas legais (11/08/2026)
+
+Quatro rotas novas: `/franquia` (captação), `/privacidade`, `/termos` e
+`/politica-de-franquia`. Os três documentos usam `TextoLegal.vue` (tipografia de
+leitura, data e bloco do responsável) e carregam em chunk próprio.
+
+`franquia.ativa = false` em `contato.js` **some com tudo de franquia de uma vez**
+— seção da home, link do header, link do rodapé e a política.
+
+### O que NÃO pode aparecer nessas páginas
+
+Franquia é regulada pela **Lei 13.966/2019**. As regras abaixo não são estilo,
+são exposição jurídica:
+
+1. **Nenhum valor de investimento, taxa, faturamento ou prazo de retorno.**
+   Esses números são conteúdo obrigatório da Circular de Oferta de Franquia
+   (COF) e, se publicados errados no site, viram problema. A página fala em
+   "está na COF" e ponto.
+2. **A COF tem que chegar 10 dias antes** de qualquer assinatura ou pagamento —
+   o site diz isso em dois lugares, de propósito.
+3. **Nada é cobrado antes da COF.** A política avisa para não pagar nada a quem
+   pedir dinheiro antes disso, em nome da marca.
+4. **Preço de revenda é sugestão, nunca imposição** — impor preço ao franqueado
+   é infração à ordem econômica (Lei 12.529/2011, art. 36, § 3º, IX).
+5. **Nenhuma promessa de lucro**, nem em número nem em adjetivo.
+6. **A página não é oferta**, e está escrito.
+
+⚠️ **`franquia.marcaRegistrada` está `false`.** Sem registro no INPI não existe
+franquia de verdade — existe parceria. A política diz "em processo de proteção";
+quando o registro sair, virar a flag muda o texto sozinho. Se o registro **não**
+estiver em andamento, esse parágrafo precisa ser corrigido antes de publicar.
+
+### A política de privacidade descreve o site que existe hoje
+
+Ela afirma, com todas as letras, que **não há backend, banco de dados nem
+cookie próprio** — o que é verdade: formulário monta mensagem de `wa.me`,
+carrinho vive no `localStorage`. Também nomeia os três terceiros que enxergam o
+visitante: **Netlify** (hospedagem), **Google Fonts** (as fontes vêm dos
+servidores do Google, então o IP chega lá) e **WhatsApp/Meta**.
+
+**Se um dia entrar Formspree, analytics, pixel, chat ou banco de dados, essa
+página precisa mudar junto** — senão vira declaração falsa. O mesmo vale para
+trocar a fonte por arquivo local: aí o Google sai da lista.
+
+⚠️ Os três documentos foram escritos por desenvolvedor, não por advogado. São
+base sólida e específica deste site (não é boilerplate genérico), mas uma
+revisão jurídica antes de publicar é barata perto do risco — ainda mais na
+parte de franquia.
+
 ## Fotos dos pratos
 
 ⚠️ **As 23 fotos de prato são de BANCO (Pexels), não são os lanches da casa.**
@@ -186,18 +238,24 @@ texto é vetor — por isso os assets finais são WebP/PNG, não SVG.
 Medida com iframe na mesma origem (o Browser pane devolve `clientWidth 0` e
 mente) e Chrome headless:
 
-- **Overflow horizontal: 0 casos** em 4 rotas × 6 larguras (360/390/768/1024/
-  1280/1440) = 24 combinações
+- **Overflow horizontal: 0 casos** em 8 rotas × 4 larguras (360/390/768/1280),
+  refeito a cada mudança (antes das páginas legais eram 4 rotas × 6 larguras)
 - **Contraste: 0 reprovações.** Corrigidos no caminho: tagline do header
   (3,01:1), sobrancelha (4,48:1), lead do hero (4,02:1), placeholder de campo
-  (3,08:1), selo "foto em breve" (4,48:1)
-- **Alvos de toque: 0 abaixo de 44px** nas 4 rotas
+  (3,08:1), selo "foto em breve" (4,48:1), número das etapas de franquia em
+  laranja sobre branco (2,26:1 — laranja da marca é cor de preenchimento, não
+  de texto sobre claro) e sobrancelha vermelha sobre a faixa amarela (3,77:1)
+- **Alvos de toque: 0 abaixo de 44px** nas 8 rotas. Link embutido em frase é
+  isento (WCAG 2.5.8) — o medidor foi ajustado para não acusar falso positivo
 - **0 imagens quebradas** (23 fotos de prato + marca)
 - **Fluxo de compra ponta a ponta**, dirigido por script no documento de topo:
   adicionar → contador e total (R$ 58,00 para 2× X-Salada + 1× batata) →
   gaveta → alterar quantidade → observação → finalizar → validação barrando
   envio incompleto → mensagem montada → link `wa.me` correto → tela de sucesso
   → navegação entre as 4 rotas → carrinho preservado
+- **Fluxo de franquia**: seção da home → página → validação barrando envio vazio
+  (3 mensagens) → mensagem montada → link `wa.me` → confirmação; as 3 páginas
+  legais abertas pelo rodapé e os links cruzados entre elas
 - Bundle: **94 KB JS gzip** + 11 KB CSS gzip no carregamento inicial
 
 ⚠️ **Screenshot de celular não foi validado visualmente em 390px.** O headless
@@ -218,4 +276,8 @@ verdade antes de publicar.
       (ver "Fotos dos pratos"). Sobrescrever `public/cardapio/<id>.webp`
 - [ ] Instagram (`contato.instagram` vazio esconde o link sozinho)
 - [ ] Repositório no GitHub + Netlify (o `netlify.toml` já está pronto)
-- [ ] Textos legais (privacidade/termos) se um dia entrar formulário com dados
+- [ ] **Revisão jurídica dos três documentos legais**, principalmente franquia
+- [ ] **Confirmar com a Maria Cristina se o programa de franquia existe mesmo**
+      e em que estágio — o site hoje diz "estruturando a expansão"
+- [ ] Registro da marca no INPI e virar `franquia.marcaRegistrada`
+- [ ] COF pronta → apontar o arquivo em `franquia.cofUrl` (o link aparece só)

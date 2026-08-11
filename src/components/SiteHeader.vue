@@ -11,6 +11,9 @@
           <router-link to="/" class="cabecalho__link">Cardápio</router-link>
           <router-link to="/sobre" class="cabecalho__link">Sobre</router-link>
           <router-link to="/contato" class="cabecalho__link">Contato</router-link>
+          <router-link v-if="franquia.ativa" to="/franquia" class="cabecalho__link cabecalho__link--franquia">
+            Franquia
+          </router-link>
         </nav>
 
         <span class="cabecalho__status" :class="{ 'cabecalho__status--off': !status.aberto }">
@@ -25,7 +28,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { empresa, statusAgora } from '@/config/contato'
+import { empresa, franquia, statusAgora } from '@/config/contato'
 import logo from '@/assets/marca-mari-lanches.webp'
 
 const status = ref(statusAgora())
@@ -99,6 +102,28 @@ setInterval(() => (status.value = statusAgora()), 60000)
   display: flex;
   align-items: center;
   gap: 6px;
+  /* Com 4 itens o menu estoura abaixo de ~400px: em vez de esconder link,
+     ele rola na horizontal (sem barra visível), igual à barra de categorias. */
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cabecalho__nav::-webkit-scrollbar {
+  display: none;
+}
+
+.cabecalho__link {
+  flex: 0 0 auto;
+}
+
+/* Franquia é o único item do menu que fala com outro público: fica marcado. */
+.cabecalho__link--franquia {
+  border: 2px solid rgba(255, 255, 255, 0.55);
+}
+
+.cabecalho__link--franquia.router-link-exact-active {
+  border-color: var(--cor-traco);
 }
 
 .cabecalho__link {

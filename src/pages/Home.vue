@@ -56,6 +56,31 @@
       </div>
     </section>
 
+    <!-- Franquia: público diferente do resto da página (quem quer abrir, não
+         quem quer comer), por isso vem depois do cardápio e com cara própria. -->
+    <section v-if="franquia.ativa" class="franquia">
+      <div class="toldo toldo--amarelo" aria-hidden="true"></div>
+      <div class="wrap franquia__grade">
+        <img :src="logo" :alt="empresa.nome" width="700" height="690" class="franquia__logo" v-revelar>
+        <div v-revelar="80">
+          <p class="sobrancelha">Expansão da marca</p>
+          <h2 class="titulo-secao">Seja um franqueado {{ empresa.nome }}</h2>
+          <p class="lead franquia__lead">
+            Quer abrir uma {{ empresa.nome }} no seu bairro? A gente entrega
+            marca, receita, treinamento e a lista de fornecedores — você cuida do
+            ponto e da equipe.
+          </p>
+          <p class="apoio franquia__nota">
+            Nada é cobrado antes da Circular de Oferta de Franquia, que a lei
+            manda entregar 10 dias antes de qualquer assinatura.
+          </p>
+          <router-link to="/franquia" class="btn btn--vermelho">
+            Quero saber como funciona
+          </router-link>
+        </div>
+      </div>
+    </section>
+
     <section class="secao secao--escura fecho">
       <div class="wrap fecho__caixa">
         <div>
@@ -83,8 +108,9 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 import HeroHome from '@/components/HeroHome.vue'
 import ProdutoCard from '@/components/ProdutoCard.vue'
 import Icone from '@/components/Icone.vue'
+import logo from '@/assets/marca-mari-lanches.webp'
 import { categorias, itensDaCategoria } from '@/config/cardapio'
-import { empresa, waLink } from '@/config/contato'
+import { empresa, franquia, waLink } from '@/config/contato'
 
 const PASSOS = [
   { titulo: 'Escolha no cardápio', texto: 'Toque em "Adicionar" nos lanches que você quer. Dá para mudar a quantidade e escrever observação.' },
@@ -235,6 +261,56 @@ onBeforeUnmount(() => {
   gap: 20px;
 }
 
+/* ---- franquia ---- */
+.franquia {
+  position: relative;
+  background: var(--amarelo);
+  border-bottom: var(--traco) solid var(--cor-traco);
+  padding: 0 0 var(--sec-pad);
+  /* Listra diagonal apagada: mesma textura do hero, em amarelo. */
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(0, 0, 0, 0.045) 0 20px,
+    rgba(0, 0, 0, 0) 20px 40px
+  );
+}
+
+.franquia .toldo {
+  border-bottom: 0;
+  border-top: var(--traco) solid var(--cor-traco);
+  margin-bottom: var(--sec-pad);
+}
+
+.franquia__grade {
+  display: grid;
+  grid-template-columns: 0.42fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.franquia__logo {
+  width: min(100%, 210px);
+  height: auto;
+  justify-self: center;
+  filter: drop-shadow(0 10px 0 rgba(24, 21, 16, 0.18));
+}
+
+/* Sobre o amarelo, o vermelho de texto cai para 3,77:1 em 12px — a
+   sobrancelha aqui vai em escuro (11,6:1). */
+.franquia .sobrancelha {
+  color: var(--escuro);
+}
+
+.franquia__lead {
+  color: var(--escuro);
+  margin-top: 14px;
+}
+
+.franquia__nota {
+  margin-bottom: 18px;
+  max-width: 56ch;
+}
+
 /* ---- fecho ---- */
 .fecho__caixa {
   display: grid;
@@ -252,6 +328,21 @@ onBeforeUnmount(() => {
 @media (max-width: 860px) {
   .passos__grade {
     grid-template-columns: 1fr;
+  }
+
+  .franquia__grade {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .franquia__lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .franquia__nota {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .fecho__caixa {

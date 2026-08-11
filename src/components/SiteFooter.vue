@@ -19,6 +19,14 @@
           <li><router-link to="/pedido">Seu pedido</router-link></li>
           <li><router-link to="/sobre">Sobre a casa</router-link></li>
           <li><router-link to="/contato">Contato e localização</router-link></li>
+          <li v-if="franquia.ativa"><router-link to="/franquia">Seja um franqueado</router-link></li>
+        </ul>
+
+        <h3 class="rodape__titulo rodape__titulo--sep">Legal</h3>
+        <ul class="rodape__lista">
+          <li><router-link to="/privacidade">Política de privacidade</router-link></li>
+          <li><router-link to="/termos">Termos de uso</router-link></li>
+          <li v-if="franquia.ativa"><router-link to="/politica-de-franquia">Política de franquia</router-link></li>
         </ul>
       </nav>
 
@@ -62,6 +70,7 @@ import logo from '@/assets/marca-mari-lanches.webp'
 import {
   contato,
   empresa,
+  franquia,
   horarios,
   instagramLink,
   waLink,
@@ -110,6 +119,10 @@ const linkZap = waLink(`Olá! Vim pelo site da ${empresa.nome}.`)
   color: #b9a894;
   font-size: 0.82rem;
   line-height: 1.5;
+}
+
+.rodape__titulo--sep {
+  margin-top: 22px;
 }
 
 .rodape__titulo {

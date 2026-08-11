@@ -49,6 +49,27 @@ export const entrega = {
 
 export const pagamentos = ['Dinheiro', 'Pix', 'Cartão na entrega']
 
+/** Data no topo das páginas legais. Atualizar ao mexer em qualquer texto. */
+export const legalAtualizadoEm = '11 de agosto de 2026'
+
+/**
+ * Programa de franquia.
+ *
+ * ⚠️ Franquia é regulada pela Lei 13.966/2019: antes de qualquer assinatura ou
+ * pagamento, o candidato tem que receber a Circular de Oferta de Franquia (COF)
+ * com no mínimo 10 dias de antecedência, e ela precisa trazer investimento,
+ * taxas, obrigações e balanço. Nada disso pode ser inventado — por isso o site
+ * NÃO publica valor de investimento, faturamento médio nem prazo de retorno.
+ * Quando a COF existir, apontar o arquivo em `cofUrl` que o link aparece
+ * sozinho na página.
+ */
+export const franquia = {
+  ativa: true,
+  cofUrl: '',
+  // Marca registrada no INPI? Sem registro não existe franquia — só parceria.
+  marcaRegistrada: false,
+}
+
 export function waLink(mensagem = `Olá! Vim pelo site da ${empresa.nome}.`) {
   return `https://wa.me/${contato.whatsapp}?text=${encodeURIComponent(mensagem)}`
 }
