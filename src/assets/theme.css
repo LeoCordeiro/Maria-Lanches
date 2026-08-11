@@ -1,0 +1,512 @@
+/* ==========================================================================
+   MARI LANCHES — identidade visual
+   Tudo que é cor, tipografia, espaço e movimento do site mora aqui.
+   Nenhum componente escreve hex; todos leem estas variáveis.
+
+   A paleta saiu do SVG oficial da logo (brasão vermelho, MARIA em laranja 3D,
+   faixa amarela, contorno marrom-quase-preto).
+   ========================================================================== */
+
+:root {
+  /* ---- cor ---- */
+  --vermelho: #e61010;
+  --vermelho-escuro: #b70a0a;
+  --vermelho-fundo: #a80808;
+  /* Vermelho para TEXTO PEQUENO sobre fundo claro. O #e61010 dá 4,48:1 sobre
+     o creme — reprova o AA por 0,02. Este dá 5,6:1. Medido, não estimado. */
+  --vermelho-texto: #c90c0c;
+  --laranja: #ff9112;
+  --laranja-claro: #ffb45a;
+  --amarelo: #ffc629;
+  --amarelo-claro: #ffe07a;
+  --escuro: #181510;
+  --marrom: #6b3010; /* contorno da ilustração da logo — vira o texto secundário */
+  --creme: #fff8f0;
+  --creme-fundo: #fdf1e3;
+  --branco: #ffffff;
+  --verde-zap: #25d366;
+
+  /* ---- traço de adesivo ----
+     A logo é toda contornada em preto grosso. O site repete isso: contorno
+     sólido + sombra dura (sem blur). É o que separa este visual de um
+     "card com box-shadow suave" genérico. */
+  --traco: 3px;
+  --cor-traco: var(--escuro);
+  --sombra-dura: 5px 5px 0 var(--escuro);
+  --sombra-dura-sm: 3px 3px 0 var(--escuro);
+  --sombra-dura-lg: 8px 8px 0 var(--escuro);
+  --raio: 18px;
+  --raio-sm: 12px;
+
+  /* ---- medidas ---- */
+  --sec-pad: 48px;
+  --largura: 1140px;
+  --header-h: 72px;
+  --toldo-h: 18px;
+
+  /* ---- tipografia ---- */
+  --fonte-display: 'Fredoka', 'Baloo 2', system-ui, sans-serif;
+  --fonte-corpo: 'Nunito', system-ui, -apple-system, sans-serif;
+
+  --transicao: 0.22s cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte-corpo);
+  color: var(--escuro);
+  background: var(--creme);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fundo da página: creme com uma listra diagonal quase imperceptível e um
+   calor alaranjado no topo — profundidade sem virar "gradiente de IA". */
+.v-application,
+#app {
+  background:
+    radial-gradient(120% 70% at 50% -10%, rgba(255, 198, 41, 0.28) 0%, rgba(255, 198, 41, 0) 60%),
+    repeating-linear-gradient(
+      45deg,
+      var(--creme) 0 14px,
+      var(--creme-fundo) 14px 28px
+    ) !important;
+  background-attachment: fixed !important;
+}
+
+/* Não usamos v-app-bar (ele injeta padding-top no v-main e abre costura).
+   O header é HTML próprio e fixo, então o respiro é dado aqui. */
+.v-main {
+  padding-top: calc(var(--header-h) + var(--toldo-h)) !important;
+}
+
+/* ---------- tipografia ---------- */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--fonte-display);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  margin: 0;
+  color: var(--escuro);
+}
+
+.titulo-xg {
+  font-size: clamp(2.35rem, 6.6vw, 4.3rem);
+  font-weight: 700;
+}
+
+.titulo-secao {
+  font-size: clamp(1.9rem, 4.6vw, 2.9rem);
+  font-weight: 700;
+}
+
+/* Sobrancelha: o contraponto de peso e tamanho do título (900 vs 600,
+   12px vs 82px). É o extremo tipográfico que a Bíblia de Design pede. */
+.sobrancelha {
+  font-family: var(--fonte-corpo);
+  font-weight: 900;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--vermelho-texto);
+  margin: 0 0 10px;
+}
+
+/* Amarelo SÓ sobre fundo escuro (11,6:1). Sobre o vermelho ele cai para
+   3,01:1 em texto pequeno — aí entra a variante branca (4,73:1). */
+.sobrancelha--clara {
+  color: var(--amarelo);
+}
+
+.sobrancelha--branca {
+  color: var(--branco);
+}
+
+p {
+  margin: 0 0 1em;
+  line-height: 1.62;
+}
+
+/* h2/h3 têm margin zero (o título é sempre o topo de um bloco); quando vem
+   texto logo depois, o respiro entra aqui. */
+h2 + p,
+h3 + p {
+  margin-top: 14px;
+}
+
+.lead {
+  font-size: 1.12rem;
+  color: var(--marrom);
+  max-width: 56ch;
+}
+
+.apoio {
+  color: var(--marrom);
+  font-size: 0.95rem;
+}
+
+a {
+  color: var(--vermelho-texto);
+}
+
+/* ---------- estrutura ---------- */
+
+.wrap {
+  width: 100%;
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.secao {
+  padding: var(--sec-pad) 0;
+  position: relative;
+}
+
+.secao--escura {
+  background: var(--escuro);
+  color: var(--creme);
+}
+
+.secao--escura h2,
+.secao--escura h3 {
+  color: var(--creme);
+}
+
+.secao--escura .lead,
+.secao--escura .apoio {
+  color: #d8c9b8;
+}
+
+/* ---------- toldo (motivo da casa) ----------
+   Listra vermelho/creme com barra amarela e borda inferior recortada em
+   meia-lua. É o elemento que amarra header, rodapé e divisórias de seção. */
+.toldo {
+  height: var(--toldo-h);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--vermelho) 0 30px,
+    var(--creme) 30px 60px
+  );
+  border-bottom: var(--traco) solid var(--cor-traco);
+  -webkit-mask-image: radial-gradient(circle 11px at 15px 100%, transparent 0 11px, #000 11.5px);
+  mask-image: radial-gradient(circle 11px at 15px 100%, transparent 0 11px, #000 11.5px);
+  -webkit-mask-size: 30px 100%;
+  mask-size: 30px 100%;
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+}
+
+.toldo--amarelo {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--amarelo) 0 30px,
+    var(--laranja) 30px 60px
+  );
+}
+
+/* ---------- botões ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-family: var(--fonte-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1;
+  padding: 15px 26px;
+  min-height: 48px;
+  border-radius: 999px;
+  border: var(--traco) solid var(--cor-traco);
+  background: var(--laranja);
+  color: var(--escuro);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--sombra-dura);
+  transition: transform var(--transicao), box-shadow var(--transicao), background 0.2s;
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--sombra-dura-lg);
+  background: var(--laranja-claro);
+}
+
+.btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--escuro);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--escuro);
+  outline-offset: 3px;
+}
+
+.btn--vermelho {
+  background: var(--vermelho);
+  color: var(--branco);
+}
+
+.btn--vermelho:hover {
+  background: var(--vermelho-escuro);
+}
+
+.btn--creme {
+  background: var(--creme);
+  color: var(--escuro);
+}
+
+.btn--creme:hover {
+  background: var(--branco);
+}
+
+.btn--zap {
+  background: var(--verde-zap);
+  color: var(--escuro);
+}
+
+.btn--zap:hover {
+  background: #3ee57c;
+}
+
+.btn--bloco {
+  width: 100%;
+}
+
+.btn[disabled],
+.btn[aria-disabled='true'] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: var(--sombra-dura-sm);
+  transform: none;
+}
+
+/* ---------- superfícies ---------- */
+
+.cartao {
+  background: var(--branco);
+  border: var(--traco) solid var(--cor-traco);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-dura);
+}
+
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--fonte-corpo);
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 2px solid var(--cor-traco);
+  background: var(--amarelo);
+  color: var(--escuro);
+}
+
+.selo--vermelho {
+  background: var(--vermelho);
+  color: var(--branco);
+}
+
+.selo--verde {
+  background: #d7f5c4;
+}
+
+/* ---------- transição entre páginas ----------
+   Animação de entrada da rota nova. É CSS puro de propósito: o `<Transition>`
+   do Vue com `mode="out-in"` depende de `requestAnimationFrame` para tirar a
+   página velha, e em aba que não produz frame isso trava com a rota nova
+   nunca renderizada. Aqui o DOM já trocou; a animação é só o acabamento. */
+.pagina-entra {
+  animation: pagina-aparece 0.26s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pagina-aparece {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- animação de entrada ---------- */
+
+.revelar {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.revelar.visivel {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- momento coreografado: adicionar ao pedido ----------
+   A ação central do site. O item "voa" do botão até o carrinho (ItemVoando),
+   o carrinho balança e o número troca com um giro. Nada mais no site anima
+   com essa intensidade — é de propósito. */
+
+@keyframes chacoalhar {
+  0% { transform: scale(1) rotate(0); }
+  22% { transform: scale(1.22) rotate(-9deg); }
+  45% { transform: scale(0.96) rotate(6deg); }
+  70% { transform: scale(1.08) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.chacoalha {
+  animation: chacoalhar 0.62s cubic-bezier(0.36, 1.4, 0.5, 1);
+}
+
+@keyframes numero-entra {
+  from { opacity: 0; transform: translateY(-90%) scale(0.5); }
+  to { opacity: 1; transform: none; }
+}
+
+.item-voando {
+  position: fixed;
+  z-index: 3000;
+  pointer-events: none;
+  border-radius: 50%;
+  border: 3px solid var(--escuro);
+  background: var(--amarelo);
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  box-shadow: var(--sombra-dura-sm);
+}
+
+/* ---------- flutuantes ---------- */
+
+.fab {
+  position: fixed;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--traco) solid var(--cor-traco);
+  border-radius: 999px;
+  box-shadow: var(--sombra-dura);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transicao), box-shadow var(--transicao);
+}
+
+.fab:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--sombra-dura-lg);
+}
+
+.fab:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--sombra-dura-sm);
+}
+
+/* ---------- formulário ---------- */
+
+.campo-rotulo {
+  display: block;
+  font-family: var(--fonte-corpo);
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--marrom);
+  margin: 0 0 7px;
+}
+
+.campo {
+  width: 100%;
+  font-family: var(--fonte-corpo);
+  font-size: 1rem;
+  color: var(--escuro);
+  background: var(--branco);
+  border: 2px solid var(--cor-traco);
+  border-radius: var(--raio-sm);
+  padding: 13px 15px;
+  min-height: 48px;
+}
+
+.campo:focus {
+  outline: none;
+  border-color: var(--vermelho);
+  box-shadow: 0 0 0 3px rgba(230, 16, 16, 0.18);
+}
+
+.campo::placeholder {
+  /* 5,3:1 sobre branco. O cinza-areia mais claro que a gente tinha dava 3,1:1. */
+  color: #7a6857;
+  opacity: 1;
+}
+
+/* ---------- utilidades ---------- */
+
+.centro {
+  text-align: center;
+}
+
+.esconde-visual {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- respeito a quem pediu menos movimento ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .revelar {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --sec-pad: 40px;
+    --sombra-dura: 4px 4px 0 var(--escuro);
+    --sombra-dura-lg: 6px 6px 0 var(--escuro);
+  }
+}

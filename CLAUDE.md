@@ -1,0 +1,212 @@
+# Mari Lanches — cardápio digital com pedido pelo WhatsApp
+
+Site da **Mari Lanches** (MEI, São Paulo/SP) — lanchonete aberta em 05/2026.
+Razão social: 66.870.166 Maria Cristina Pereira Dias · CNAE 56.11-2/03.
+
+Diferente da maioria dos sites do Empresa Pronta, este **não é institucional**:
+o coração é o cardápio com carrinho. O cliente monta o pedido no site e
+finaliza no WhatsApp — sem checkout, sem pagamento online, sem backend.
+
+## Stack
+
+Vue 3 + Vuetify 3 (só como shell + alguns componentes) + vue-router com
+`createWebHashHistory` + Pinia (carrinho). Sem PWA (incompatível com Node 24).
+Build: `vue-cli-service`. Deploy: Netlify.
+
+```bash
+npm install
+npm run serve    # dev
+npm run build    # produção → dist/
+```
+
+## Regras deste projeto (não quebrar)
+
+- **`<img>` normal, nunca `v-img`** — o `v-img` põe fundo branco atrás da arte.
+- **Sem `v-app-bar`** — ele injeta `padding-top` no `v-main` e abre costura
+  entre header e hero. O header é HTML próprio, fixo; o respiro vem da regra
+  `.v-main { padding-top: … }` no `theme.css`.
+- **Vuetify sem `import 'vuetify/styles'`** — o CSS global custa ~244 KB para
+  meia dúzia de componentes. Consequências que já mordidas:
+  - **classes utilitárias do Vuetify não existem** (`d-flex`, `ma-4`,
+    `text-h4`). Escreva CSS próprio.
+  - **as classes de `<Transition>` do Vuetify também não existem.** Ver
+    "Transição de página" abaixo.
+- **Nada de `@mdi/font`** — seriam ~300 KB de fonte para sete desenhos, e nome
+  de ícone errado no MDI falha calado (não desenha nada e não avisa). Os ícones
+  são SVG inline em `src/components/Icone.vue`.
+- **Padding de seção compacto** (`--sec-pad: 48px`).
+- **Cor só pelas variáveis do `theme.css`.** Nenhum componente escreve hex.
+- **Vermelho tem dois tons de propósito:** `--vermelho` (#e61010) para fundo e
+  texto grande; `--vermelho-texto` (#c90c0c) para **texto pequeno sobre fundo
+  claro** — o #e61010 dá 4,48:1 sobre o creme e reprova o AA por 0,02.
+- **Amarelo nunca em texto pequeno sobre vermelho** (3,01:1). Sobre o vermelho
+  use `.sobrancelha--branca`; o amarelo só vale sobre `--escuro` (11,6:1).
+- **Mobile-first**: pedido de lanchonete entra quase todo pelo celular.
+  Alvo de toque mínimo 44px — medido nas 4 rotas.
+
+## Transição de página (armadilha que custou tempo)
+
+O `<v-fade-transition mode="out-in">` **foi removido**. Dois problemas
+empilhados:
+
+1. O CSS das classes `fade-transition-*` mora no `vuetify/styles` global, que
+   este projeto não importa — sem ele não há duração e a transição fica sem
+   sentido visual.
+2. Pior: com `mode="out-in"` a saída da página velha só avança dentro de um
+   `requestAnimationFrame`. Em aba que não produz frame (janela ocluída,
+   webview embutida, headless) ela **nunca termina e a rota nova nunca
+   renderiza** — o sintoma é o `fade-transition-leave-from` preso no elemento
+   e a página ficando uma navegação atrasada.
+
+No lugar entrou crossfade em CSS puro: `<component :is>` com `:key="route.path"`
+e a classe `.pagina-entra` (`@keyframes pagina-aparece` no `theme.css`).
+A troca de DOM é imediata; a animação é só acabamento. **Não voltar para
+`<Transition>` com `mode="out-in"` sem testar navegação num browser que
+produza frames.**
+
+## Onde mexer
+
+| Quero mudar | Arquivo |
+|---|---|
+| WhatsApp, endereço, Instagram, horário, entrega, pagamentos | `src/config/contato.js` — **único ponto** |
+| Itens, preços, categorias, fotos, fornecedores | `src/config/cardapio.js` |
+| Nome da marca em todo o site | `empresa.nome` em `contato.js` |
+| Paleta, tipografia, botões, animações | `src/assets/theme.css` |
+| Regra do carrinho e mensagem do WhatsApp | `src/store/carrinho.js` |
+| Animação de "adicionar ao carrinho" | `src/utils/voar.js` |
+| Ícones | `src/components/Icone.vue` |
+
+## Carrinho
+
+Pinia (`src/store/carrinho.js`), sem login e sem backend.
+
+- **Persiste em `localStorage`** (`mari-lanches:carrinho`), itens **e** dados do
+  cliente. Quem sai para o WhatsApp e volta não perde o que digitou.
+- **Itens com observações diferentes ocupam linhas separadas** — "1x Refri
+  (Guaraná)" e "1x Refri (Coca)" não podem virar "2x Refri".
+- `pendencias()` devolve o que falta preencher; o botão de enviar dá
+  `preventDefault` e mostra a lista em vez de abrir o WhatsApp incompleto.
+- `mensagemPedido()` monta o texto; o link é
+  `https://wa.me/<numero>?text=<encodeURIComponent(mensagem)>`.
+  A página do pedido mostra a prévia da mensagem num `<details>` — o cliente vê
+  exatamente o que vai enviar.
+- **Taxa de entrega não é inventada.** Com `entrega.taxa = null` a mensagem diz
+  "(taxa de entrega a combinar)". Se um dia houver valor fixo, preencher em
+  `contato.js` que a mensagem passa a somar sozinha.
+
+## Expansão futura (central de pedidos do bairro)
+
+Todo item do cardápio tem `fornecedor`, e existe o mapa `fornecedores` com
+`daCasa: true/false`. Hoje tudo é `casa`. Quando entrar um parceiro:
+
+1. adicionar em `fornecedores` com `daCasa: false`
+2. apontar `fornecedor: 'id_do_parceiro'` nos itens dele
+
+O card mostra o selo do parceiro sozinho (`seloFornecedor()`); nada mais precisa
+mudar. **Enquanto isso não existir, o site não fala de "central do bairro"** —
+prometer no site o que ainda não opera é problema, não marketing.
+
+## Identidade visual
+
+Vem inteira da logo oficial (brasão vermelho, hambúrguer, "MARIA" em laranja 3D,
+faixa amarela). Paleta extraída do SVG:
+
+| Papel | Cor |
+|---|---|
+| Dominante / header / hero | `#E61010` (escurece para `#A80808` no fim do hero) |
+| Ação (botão "Adicionar") | `#FF9112` com texto escuro — 8:1 |
+| Destaque / faixas / selos | `#FFC629` |
+| Contorno e texto | `#181510` |
+| Texto secundário | `#6B3010` (o marrom do contorno da ilustração) |
+| Fundo de página | `#FFF8F0` com listra diagonal e calor amarelo no topo |
+
+**Tipografia:** Fredoka (display, 400–700) e Nunito (corpo, 400–900).
+O extremo é proposital: Fredoka 700 em ~69px no hero contra Nunito 900 em 12px
+na sobrancelha. O título do hero mistura as duas famílias — "do jeito" em Nunito
+itálico amarelo dentro de um h1 Fredoka.
+
+**Dois motivos que amarram o visual** (é o que separa isto de um template):
+
+1. **Traço de adesivo** — contorno preto de 3px + sombra dura sem blur
+   (`--sombra-dura`), copiando o contorno grosso da ilustração da logo.
+   Botões afundam no `:active` movendo a sombra.
+2. **Toldo** — faixa listrada com a borda inferior recortada em meia-lua
+   (`.toldo`, feito com `mask-image` de círculos). Aparece embaixo do header,
+   no fim do hero e no topo do rodapé.
+
+**Momento coreografado único: adicionar ao carrinho.** O item voa do botão até
+o carrinho num arco (`voar.js`, Web Animations API), o carrinho chacoalha e o
+total troca com uma girada. Nada mais no site anima com essa intensidade.
+Tudo respeita `prefers-reduced-motion`.
+
+## Fotos dos pratos
+
+**Não há foto real ainda e o site não finge que há.** `foto: null` faz o card
+renderizar `PlaceholderPrato.vue`: silhueta da categoria + selo "foto em breve",
+na cor da categoria.
+
+⚠️ **Nunca** colocar foto de banco de imagens ou gerada por IA em item de
+cardápio. O cliente recebe o que está na foto; foto de outro lanche é
+propaganda enganosa. Quando tiver foto de verdade:
+
+1. salvar em `public/cardapio/<id>.webp` (proporção 16:10)
+2. apontar `foto: '/cardapio/x-salada.webp'` no `cardapio.js`
+
+A primeira versão do placeholder usava a inicial gigante do prato — seis dos
+oito lanches começam com "X" e a grade virou uma parede de X, lendo como imagem
+quebrada. Por isso a silhueta.
+
+## Assets de marca
+
+- `src/assets/marca-mari-lanches.webp` — logo completa, 57 KB (transparente)
+- `src/assets/hamburguer.webp` — só o hambúrguer, usado em estado vazio
+- `public/marca/icon-{192,512}.png`, `apple-touch-icon.png`, `favicon.ico`,
+  `favicon-{16,32}.png` — hambúrguer isolado sobre quadrado vermelho
+- `marca/logo-original-canva.svg` — o arquivo original do cliente (480 KB)
+- `marca/mari-lanches-transparente.svg` — original sem os fundos brancos
+
+**O SVG original tinha três fundos brancos** (dois `<rect>` de 1800×1800 e um
+PNG 1280×1280 chapado). Sem removê-los a logo não pode ir sobre fundo colorido
+e qualquer glow vira halo retangular. O brasão em si é raster com máscara; só o
+texto é vetor — por isso os assets finais são WebP/PNG, não SVG.
+
+## Validação já feita (11/08/2026)
+
+Medida com iframe na mesma origem (o Browser pane devolve `clientWidth 0` e
+mente) e Chrome headless:
+
+- **Overflow horizontal: 0 casos** em 4 rotas × 6 larguras (360/390/768/1024/
+  1280/1440) = 24 combinações
+- **Contraste: 0 reprovações.** Corrigidos no caminho: tagline do header
+  (3,01:1), sobrancelha (4,48:1), lead do hero (4,02:1), placeholder de campo
+  (3,08:1), selo "foto em breve" (4,48:1)
+- **Alvos de toque: 0 abaixo de 44px** nas 4 rotas
+- **0 imagens quebradas**
+- **Fluxo de compra ponta a ponta**, dirigido por script no documento de topo:
+  adicionar → contador e total (R$ 58,00 para 2× X-Salada + 1× batata) →
+  gaveta → alterar quantidade → observação → finalizar → validação barrando
+  envio incompleto → mensagem montada → link `wa.me` correto → tela de sucesso
+  → navegação entre as 4 rotas → carrinho preservado
+- Bundle: **94 KB JS gzip** + 11 KB CSS gzip no carregamento inicial
+
+⚠️ **Screenshot de celular não foi validado visualmente em 390px.** O headless
+do Windows não desce abaixo de ~504px de viewport (a captura em 390 sai
+recortada), e iframe não pinta em screenshot. O layout de 390px foi conferido
+por **número** (rects, contraste, alvos), não por foto. Conferir no celular de
+verdade antes de publicar.
+
+## Pendente antes de publicar
+
+- [ ] **WhatsApp real** — hoje `5511900000000` em `contato.js`. Sem isso o site
+      não serve para nada.
+- [ ] **Cardápio real** — os 24 itens e preços em `cardapio.js` são exemplo
+      plausível, **não são o cardápio da casa**.
+- [ ] **Endereço, horário de funcionamento e formas de pagamento** conferidos
+      com a Maria Cristina (o horário atual é chute: 18h às 23h30, fechado terça)
+- [ ] **Fotos reais dos lanches**
+- [ ] Instagram (`contato.instagram` vazio esconde o link sozinho)
+- [ ] Decidir o nome da marca: a logo escreve **"MARIA Lanches"**, o briefing
+      pediu **"Mari Lanches"**. O site usa "Mari Lanches" — trocar
+      `empresa.nome` resolve tudo de uma vez
+- [ ] Repositório no GitHub + Netlify (o `netlify.toml` já está pronto)
+- [ ] Textos legais (privacidade/termos) se um dia entrar formulário com dados
