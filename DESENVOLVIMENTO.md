@@ -198,9 +198,9 @@ lanchonete substituem estas antes da publicação. **Não publicar assim** — o
 cliente recebe o que está na foto, e foto de outro lanche é propaganda
 enganosa.
 
-- Colhidas com o `harvest_imagens.py` da `_design-library`, **uma busca por
-  prato** (senão o cardápio inteiro sai com a mesma foto de hambúrguer).
-  Originais + crédito/licença em `_design-library/imagens/lanchonete/`
+- Colhidas no Pexels com **uma busca por prato** (senão o cardápio inteiro sai
+  com a mesma foto de hambúrguer). Os originais em alta ficam fora do
+  repositório; o crédito e a licença de cada foto usada estão versionados
 - No projeto: `public/cardapio/<id>.webp`, 640×400 (16:10), ~25 KB cada,
   572 KB no total, todas com `loading="lazy"`. Créditos em
   `public/cardapio/_creditos.json`

@@ -18,8 +18,13 @@ export const contato = {
   whatsapp: '5511922011449',
   // Vazio ('') some do site sozinho.
   email: 'atendimento@marialanches.com.br',
-  // ⚠️ TROCAR: @ do Instagram, sem o @. Vazio some sozinho.
-  instagram: '',
+  // @ do Instagram, sem o @. Vazio some sozinho.
+  instagram: 'maria_lanches22',
+  // Página no Reclame Aqui. Vazio esconde o link.
+  // ⚠️ Em 11/08/2026 `reclameaqui.com.br/empresa/marialanches/` respondia 404
+  // (a empresa ainda não tem perfil lá) — link quebrado no rodapé é pior do
+  // que link nenhum. Criado o perfil, é só colar a URL aqui.
+  reclameAqui: '',
   // Endereço completo. Vazio = site assume "só entrega".
   endereco: 'Rua Palha Brava, 23 — Jardim dos Ipês, São Paulo/SP, CEP 08161-290',
   // Link do mapa. Vazio esconde o botão "Ver no mapa".

@@ -42,13 +42,22 @@
           class="rodape__email"
         >{{ contato.email }}</a>
         <p v-if="contato.endereco" class="apoio rodape__endereco">{{ contato.endereco }}</p>
-        <a
-          v-if="contato.instagram"
-          :href="instagramLink()"
-          target="_blank"
-          rel="noopener"
-          class="rodape__insta"
-        >@{{ contato.instagram }}</a>
+        <div v-if="contato.instagram || contato.reclameAqui" class="rodape__redes">
+          <a
+            v-if="contato.instagram"
+            :href="instagramLink()"
+            target="_blank"
+            rel="noopener"
+            class="rodape__rede"
+          >@{{ contato.instagram }}</a>
+          <a
+            v-if="contato.reclameAqui"
+            :href="contato.reclameAqui"
+            target="_blank"
+            rel="noopener"
+            class="rodape__rede"
+          >Reclame Aqui</a>
+        </div>
       </div>
 
       <div>
@@ -191,12 +200,24 @@ const linkZap = waLink(`Olá! Vim pelo site da ${empresa.nome}.`)
   max-width: 30ch;
 }
 
-.rodape__insta {
-  display: inline-block;
-  margin-top: 10px;
+.rodape__redes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 6px;
+}
+
+.rodape__rede {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px; /* alvo de toque */
   color: var(--amarelo);
   font-weight: 800;
   text-decoration: none;
+}
+
+.rodape__rede:hover {
+  text-decoration: underline;
 }
 
 .rodape__horarios {

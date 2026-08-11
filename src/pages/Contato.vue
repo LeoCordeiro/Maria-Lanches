@@ -21,6 +21,13 @@
             Prefere e-mail?
             <a :href="`mailto:${contato.email}`">{{ contato.email }}</a>
           </p>
+          <p v-if="contato.instagram" class="apoio">
+            No Instagram:
+            <a :href="instagramLink()" target="_blank" rel="noopener">@{{ contato.instagram }}</a>
+          </p>
+          <p v-if="contato.reclameAqui" class="apoio">
+            <a :href="contato.reclameAqui" target="_blank" rel="noopener">Nossa página no Reclame Aqui</a>
+          </p>
           <a :href="linkZap" target="_blank" rel="noopener" class="btn btn--zap">
             <Icone nome="zap" :tamanho="20" />
             Abrir conversa
@@ -98,6 +105,7 @@ import {
   empresa,
   entrega,
   horarios,
+  instagramLink,
   pagamentos,
   statusAgora,
   waLink,
