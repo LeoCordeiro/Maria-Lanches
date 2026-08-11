@@ -1,0 +1,209 @@
+[
+  {
+    "arquivo": "x-salada.webp",
+    "item": "x-salada",
+    "origem": "x-salada-1.jpg",
+    "banco": "pexels",
+    "autor": "Marstudio Media",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/burger-served-in-a-restaurant-18867543/"
+  },
+  {
+    "arquivo": "x-burger.webp",
+    "item": "x-burger",
+    "origem": "x-burger-2.jpg",
+    "banco": "pexels",
+    "autor": "ᗩᑎᑌᑭKᑌᗰᎪᏒ PATEL",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/burger-with-red-onion-20722035/"
+  },
+  {
+    "arquivo": "x-bacon.webp",
+    "item": "x-bacon",
+    "origem": "x-bacon-4.jpg",
+    "banco": "pexels",
+    "autor": "ᗩᑎᑌᑭKᑌᗰᎪᏒ PATEL",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/cheeseburger-with-meat-20722058/"
+  },
+  {
+    "arquivo": "x-egg.webp",
+    "item": "x-egg",
+    "origem": "x-egg-1.jpg",
+    "banco": "pexels",
+    "autor": "ᗩᑎᑌᑭKᑌᗰᎪᏒ PATEL",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/burger-with-vegetables-20722030/"
+  },
+  {
+    "arquivo": "x-tudo.webp",
+    "item": "x-tudo",
+    "origem": "x-tudo-2.jpg",
+    "banco": "pexels",
+    "autor": "Elements Interactive",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/delicious-spicy-double-cheeseburger-on-orange-background-32177657/"
+  },
+  {
+    "arquivo": "x-calabresa.webp",
+    "item": "x-calabresa",
+    "origem": "x-calabresa-1.jpg",
+    "banco": "pexels",
+    "autor": "Jesus Cabrera",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/close-up-shot-of-a-sandwich-on-a-plate-5041477/"
+  },
+  {
+    "arquivo": "x-frango.webp",
+    "item": "x-frango",
+    "origem": "x-frango-2.jpg",
+    "banco": "pexels",
+    "autor": "Peps Silvestro",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/burger-and-fries-on-brown-wooden-round-tray-12129480/"
+  },
+  {
+    "arquivo": "misto-quente.webp",
+    "item": "misto-quente",
+    "origem": "misto-quente-1.jpg",
+    "banco": "pexels",
+    "autor": "Raul Corrado",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/a-close-up-shot-of-a-sandwich-with-bacon-and-cheese-5634630/"
+  },
+  {
+    "arquivo": "batata-frita.webp",
+    "item": "batata-frita",
+    "origem": "batata-frita-1.jpg",
+    "banco": "pexels",
+    "autor": "Mony  Cruz",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/delicious-french-fries-with-ketchup-on-black-36292352/"
+  },
+  {
+    "arquivo": "batata-cheddar.webp",
+    "item": "batata-cheddar",
+    "origem": "batata-cheddar-2.jpg",
+    "banco": "pexels",
+    "autor": "Nano Erdozain",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/loaded-fries-with-cheese-and-sauces-on-wooden-table-29285461/"
+  },
+  {
+    "arquivo": "frango-passarinho.webp",
+    "item": "frango-passarinho",
+    "origem": "frango-passarinho-1.jpg",
+    "banco": "pexels",
+    "autor": "J KREATOR",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/delicious-middle-eastern-chicken-platter-32986493/"
+  },
+  {
+    "arquivo": "nuggets.webp",
+    "item": "nuggets",
+    "origem": "nuggets-2.jpg",
+    "banco": "pexels",
+    "autor": "Ali Dashti",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/top-view-of-a-dish-with-meat-and-fries-23106705/"
+  },
+  {
+    "arquivo": "combo-classico.webp",
+    "item": "combo-classico",
+    "origem": "combo-classico-1.jpg",
+    "banco": "pexels",
+    "autor": "Ali Dashti",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/fast-food-on-a-tray-20003199/"
+  },
+  {
+    "arquivo": "combo-bacon.webp",
+    "item": "combo-bacon",
+    "origem": "combo-bacon-1.jpg",
+    "banco": "pexels",
+    "autor": "ᗩᑎᑌᑭKᑌᗰᎪᏒ PATEL",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/cheeseburger-with-meat-20722058/"
+  },
+  {
+    "arquivo": "combo-casal.webp",
+    "item": "combo-casal",
+    "origem": "combo-casal-1.jpg",
+    "banco": "pexels",
+    "autor": "Mohamed  Olwy",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/delicious-cheeseburgers-with-crispy-fries-36829386/"
+  },
+  {
+    "arquivo": "refri-lata.webp",
+    "item": "refri-lata",
+    "origem": "refri-lata-3.jpg",
+    "banco": "pexels",
+    "autor": "aidin gheshlaghi",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/dropping-ice-cubes-to-beverage-16716138/"
+  },
+  {
+    "arquivo": "refri-2l.webp",
+    "item": "refri-2l",
+    "origem": "refri-2l-3.jpg",
+    "banco": "pexels",
+    "autor": "Barbara Webb",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/lemon-iced-tea-with-lemon-fruits-792613/"
+  },
+  {
+    "arquivo": "suco-laranja.webp",
+    "item": "suco-laranja",
+    "origem": "suco-laranja-2.jpg",
+    "banco": "pexels",
+    "autor": "Amirho3in tavkoli",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/hand-holding-a-cocktail-15823268/"
+  },
+  {
+    "arquivo": "agua.webp",
+    "item": "agua",
+    "origem": "agua-8.jpg",
+    "banco": "pexels",
+    "autor": "Studio Naae",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/close-up-of-water-with-lemon-slices-13439100/"
+  },
+  {
+    "arquivo": "milkshake.webp",
+    "item": "milkshake",
+    "origem": "milkshake-1.jpg",
+    "banco": "pexels",
+    "autor": "Anil  Sharma",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/delicious-cookies-and-cream-milkshake-on-table-30660270/"
+  },
+  {
+    "arquivo": "pudim.webp",
+    "item": "pudim",
+    "origem": "pudim-4.jpg",
+    "banco": "pexels",
+    "autor": "Changhee Kim",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/close-up-shot-of-a-caramel-pudding-with-whipped-cream-9238689/"
+  },
+  {
+    "arquivo": "brownie.webp",
+    "item": "brownie",
+    "origem": "brownie-2.jpg",
+    "banco": "pexels",
+    "autor": "Elle Kwee",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/delicious-chocolate-brownie-on-slate-plate-38028980/"
+  },
+  {
+    "arquivo": "petit-gateau.webp",
+    "item": "petit-gateau",
+    "origem": "petit-gateau-1.jpg",
+    "banco": "pexels",
+    "autor": "Razane Adra",
+    "licenca": "Pexels License (uso comercial, sem atribuicao obrigatoria)",
+    "fonte": "https://www.pexels.com/photo/cake-on-black-ceramic-plate-13878326/"
+  }
+]

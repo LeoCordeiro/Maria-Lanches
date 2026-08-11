@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '@/pages/Home.vue'
+import { empresa } from '@/config/contato'
 
 const routes = [
   { path: '/', name: 'cardapio', component: Home, meta: { titulo: 'Cardápio' } },
@@ -37,8 +38,8 @@ const router = createRouter({
 router.afterEach((para) => {
   const t = para.meta && para.meta.titulo
   document.title = t
-    ? `${t} — Mari Lanches`
-    : 'Mari Lanches — lanches na chapa e pedido pelo WhatsApp | São Paulo'
+    ? `${t} — ${empresa.nome}`
+    : `${empresa.nome} — lanches na chapa e pedido pelo WhatsApp | São Paulo`
 })
 
 export default router

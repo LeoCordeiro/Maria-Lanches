@@ -6,7 +6,9 @@
       :class="{ 'prato--alto': isHovering }"
     >
       <div class="prato__foto">
-        <img v-if="item.foto" :src="item.foto" :alt="item.nome" loading="lazy" width="480" height="360">
+        <!-- width/height batem com o arquivo real (640×400) para o navegador
+             reservar a altura certa antes de baixar a imagem. -->
+        <img v-if="item.foto" :src="item.foto" :alt="item.nome" loading="lazy" width="640" height="400">
         <PlaceholderPrato v-else :nome="item.nome" :categoria="item.categoria" />
 
         <span v-if="item.destaque" class="selo selo--vermelho prato__destaque">Mais pedido</span>

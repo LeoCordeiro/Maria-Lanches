@@ -5,9 +5,8 @@
 
 export const empresa = {
   // O nome que aparece em TODO o site (header, títulos, mensagem do pedido).
-  // ⚠️ A logo oficial escreve "MARIA Lanches"; o briefing pediu "Mari Lanches".
-  // Trocar aqui resolve o site inteiro de uma vez.
-  nome: 'Mari Lanches',
+  // Confirmado pelo Leonardo em 11/08/2026: é "Maria Lanches", igual à logo.
+  nome: 'Maria Lanches',
   razaoSocial: '66.870.166 Maria Cristina Pereira Dias',
   cnpj: '66.870.166/0001-77',
   tagline: 'Sua melhor opção fora de casa!',

@@ -1,7 +1,7 @@
 {
-  "name": "Mari Lanches",
-  "short_name": "Mari Lanches",
-  "description": "Cardápio da Mari Lanches — peça pelo WhatsApp",
+  "name": "Maria Lanches",
+  "short_name": "Maria Lanches",
+  "description": "Cardápio da Maria Lanches — peça pelo WhatsApp",
   "icons": [
     { "src": "marca/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "marca/icon-512.png", "sizes": "512x512", "type": "image/png" }

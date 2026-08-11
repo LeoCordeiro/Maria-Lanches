@@ -1,6 +1,6 @@
-# Mari Lanches — cardápio digital com pedido pelo WhatsApp
+# Maria Lanches — cardápio digital com pedido pelo WhatsApp
 
-Site da **Mari Lanches** (MEI, São Paulo/SP) — lanchonete aberta em 05/2026.
+Site da **Maria Lanches** (MEI, São Paulo/SP) — lanchonete aberta em 05/2026.
 Razão social: 66.870.166 Maria Cristina Pereira Dias · CNAE 56.11-2/03.
 
 Diferente da maioria dos sites do Empresa Pronta, este **não é institucional**:
@@ -141,16 +141,27 @@ Tudo respeita `prefers-reduced-motion`.
 
 ## Fotos dos pratos
 
-**Não há foto real ainda e o site não finge que há.** `foto: null` faz o card
-renderizar `PlaceholderPrato.vue`: silhueta da categoria + selo "foto em breve",
-na cor da categoria.
+⚠️ **As 23 fotos de prato são de BANCO (Pexels), não são os lanches da casa.**
+Entraram a pedido do Leonardo em 11/08/2026 **só para avaliar o layout pronto**;
+as fotos reais vêm do cliente depois. **Não publicar assim** — o cliente recebe
+o que está na foto, e foto de outro lanche é propaganda enganosa.
 
-⚠️ **Nunca** colocar foto de banco de imagens ou gerada por IA em item de
-cardápio. O cliente recebe o que está na foto; foto de outro lanche é
-propaganda enganosa. Quando tiver foto de verdade:
-
-1. salvar em `public/cardapio/<id>.webp` (proporção 16:10)
-2. apontar `foto: '/cardapio/x-salada.webp'` no `cardapio.js`
+- Colhidas com o `harvest_imagens.py` da `_design-library`, **uma busca por
+  prato** (senão o cardápio inteiro sai com a mesma foto de hambúrguer).
+  Originais + crédito/licença em `_design-library/imagens/lanchonete/`
+- No projeto: `public/cardapio/<id>.webp`, 640×400 (16:10), ~25 KB cada,
+  572 KB no total, todas com `loading="lazy"`. Créditos em
+  `public/cardapio/_creditos.json`
+- **Trocar por foto real = sobrescrever o arquivo.** Nenhuma linha de código
+  muda, desde que o nome seja o `id` do item
+- Fotos de refrigerante com **marca visível** (Coca-Cola, Pepsi) foram
+  descartadas de propósito: marca de terceiro no cardápio do cliente é
+  problema, e ainda promete um estoque que talvez não exista. No lugar,
+  copo com gelo
+- **`calabresa-acebolada` ficou sem foto de propósito** — o banco não tem o
+  prato (as buscas devolvem pizza, pretzel e café da manhã inglês). Serve de
+  demonstração do fallback: com `foto: null` o card renderiza
+  `PlaceholderPrato.vue`, com a silhueta da categoria e o selo "foto em breve"
 
 A primeira versão do placeholder usava a inicial gigante do prato — seis dos
 oito lanches começam com "X" e a grade virou uma parede de X, lendo como imagem
@@ -181,7 +192,7 @@ mente) e Chrome headless:
   (3,01:1), sobrancelha (4,48:1), lead do hero (4,02:1), placeholder de campo
   (3,08:1), selo "foto em breve" (4,48:1)
 - **Alvos de toque: 0 abaixo de 44px** nas 4 rotas
-- **0 imagens quebradas**
+- **0 imagens quebradas** (23 fotos de prato + marca)
 - **Fluxo de compra ponta a ponta**, dirigido por script no documento de topo:
   adicionar → contador e total (R$ 58,00 para 2× X-Salada + 1× batata) →
   gaveta → alterar quantidade → observação → finalizar → validação barrando
@@ -203,10 +214,8 @@ verdade antes de publicar.
       plausível, **não são o cardápio da casa**.
 - [ ] **Endereço, horário de funcionamento e formas de pagamento** conferidos
       com a Maria Cristina (o horário atual é chute: 18h às 23h30, fechado terça)
-- [ ] **Fotos reais dos lanches**
+- [ ] **Fotos reais dos lanches** — hoje são de banco, só para o preview
+      (ver "Fotos dos pratos"). Sobrescrever `public/cardapio/<id>.webp`
 - [ ] Instagram (`contato.instagram` vazio esconde o link sozinho)
-- [ ] Decidir o nome da marca: a logo escreve **"MARIA Lanches"**, o briefing
-      pediu **"Mari Lanches"**. O site usa "Mari Lanches" — trocar
-      `empresa.nome` resolve tudo de uma vez
 - [ ] Repositório no GitHub + Netlify (o `netlify.toml` já está pronto)
 - [ ] Textos legais (privacidade/termos) se um dia entrar formulário com dados

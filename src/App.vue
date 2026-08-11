@@ -22,7 +22,7 @@
       :href="linkZap"
       target="_blank"
       rel="noopener"
-      aria-label="Falar com a Mari Lanches no WhatsApp"
+      :aria-label="`Falar com a ${empresa.nome} no WhatsApp`"
     >
       <Icone nome="zap" :tamanho="28" />
     </a>
