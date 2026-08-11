@@ -17,6 +17,10 @@
           <h2 class="caixa__titulo">WhatsApp</h2>
           <p class="caixa__destaque">{{ whatsappLegivel() }}</p>
           <p class="apoio">Pedidos, dúvidas e reservas de porção grande.</p>
+          <p v-if="contato.email" class="apoio">
+            Prefere e-mail?
+            <a :href="`mailto:${contato.email}`">{{ contato.email }}</a>
+          </p>
           <a :href="linkZap" target="_blank" rel="noopener" class="btn btn--zap">
             <Icone nome="zap" :tamanho="20" />
             Abrir conversa

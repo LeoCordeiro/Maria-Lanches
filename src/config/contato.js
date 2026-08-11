@@ -15,10 +15,11 @@ export const empresa = {
 }
 
 export const contato = {
-  // ⚠️ TROCAR: DDI + DDD + número, só dígitos. É para cá que vai todo pedido.
-  whatsapp: '5511900000000',
-  // ⚠️ TROCAR ou deixar vazio ('') — some do rodapé sozinho.
-  email: '',
+  // DDI + DDD + número, só dígitos. É para cá que vai todo pedido.
+  // Confirmado pelo Leonardo em 11/08/2026: (11) 92201-1449.
+  whatsapp: '5511922011449',
+  // Vazio ('') some do site sozinho.
+  email: 'atendimento@marialanches.com.br',
   // ⚠️ TROCAR: @ do Instagram, sem o @. Vazio some sozinho.
   instagram: '',
   // ⚠️ TROCAR: endereço completo. Vazio = site assume "só entrega".

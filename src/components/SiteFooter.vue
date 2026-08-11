@@ -36,6 +36,11 @@
           <Icone nome="zap" :tamanho="20" />
           {{ whatsappLegivel() }}
         </a>
+        <a
+          v-if="contato.email"
+          :href="`mailto:${contato.email}`"
+          class="rodape__email"
+        >{{ contato.email }}</a>
         <p v-if="contato.endereco" class="apoio rodape__endereco">{{ contato.endereco }}</p>
         <a
           v-if="contato.instagram"
@@ -162,6 +167,21 @@ const linkZap = waLink(`Olá! Vim pelo site da ${empresa.nome}.`)
 .rodape__zap {
   font-size: 0.98rem;
   padding: 13px 20px;
+}
+
+.rodape__email {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px; /* alvo de toque */
+  margin-top: 6px;
+  color: var(--creme);
+  font-weight: 600;
+  font-size: 0.92rem;
+  word-break: break-all;
+}
+
+.rodape__email:hover {
+  color: var(--amarelo);
 }
 
 .rodape__endereco {
