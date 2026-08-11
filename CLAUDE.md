@@ -69,7 +69,7 @@ produza frames.**
 
 | Quero mudar | Arquivo |
 |---|---|
-| WhatsApp, endereço, Instagram, horário, entrega, pagamentos | `src/config/contato.js` — **único ponto** |
+| WhatsApp, e-mail, endereço, Instagram, horário, entrega, pagamentos | `src/config/contato.js` — **único ponto** |
 | Itens, preços, categorias, fotos, fornecedores | `src/config/cardapio.js` |
 | Nome da marca em todo o site | `empresa.nome` em `contato.js` |
 | Paleta, tipografia, botões, animações | `src/assets/theme.css` |
@@ -266,8 +266,9 @@ verdade antes de publicar.
 
 ## Pendente antes de publicar
 
-- [ ] **WhatsApp real** — hoje `5511900000000` em `contato.js`. Sem isso o site
-      não serve para nada.
+- [x] ~~WhatsApp real~~ — **(11) 92201-1449**, confirmado em 11/08/2026.
+- [x] ~~E-mail~~ — **atendimento@marialanches.com.br**. Aparece no rodapé, na
+      página de contato e no bloco de responsável dos documentos legais.
 - [ ] **Cardápio real** — os 24 itens e preços em `cardapio.js` são exemplo
       plausível, **não são o cardápio da casa**.
 - [ ] **Endereço, horário de funcionamento e formas de pagamento** conferidos
@@ -275,7 +276,13 @@ verdade antes de publicar.
 - [ ] **Fotos reais dos lanches** — hoje são de banco, só para o preview
       (ver "Fotos dos pratos"). Sobrescrever `public/cardapio/<id>.webp`
 - [ ] Instagram (`contato.instagram` vazio esconde o link sozinho)
-- [ ] Repositório no GitHub + Netlify (o `netlify.toml` já está pronto)
+- [x] ~~Repositório no GitHub~~ — `github.com/LeoCordeiro/Maria-Lanches`,
+      **público**, branch `main`.
+- [ ] Conectar o Netlify ao repositório (o `netlify.toml` já está pronto:
+      build, publish, redirect de SPA e cache — não precisa preencher nada
+      na tela)
+- [ ] Confirmar se o e-mail `atendimento@marialanches.com.br` já existe e
+      recebe de verdade — o site publica ele como canal de atendimento
 - [ ] **Revisão jurídica dos três documentos legais**, principalmente franquia
 - [ ] **Confirmar com a Maria Cristina se o programa de franquia existe mesmo**
       e em que estágio — o site hoje diz "estruturando a expansão"
